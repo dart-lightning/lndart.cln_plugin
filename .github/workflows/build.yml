@@ -1,4 +1,4 @@
-name: core lightning common sanity check
+name: cln_plugin common sanity check
 
 on:
   push:
@@ -21,8 +21,15 @@ jobs:
         with:
           sdk: ${{ matrix.sdk }}
 
-      - name: sdk ${{ matrix.sdk }} and os ${{ matrix.os }}
+      - name: Formatting sdk ${{ matrix.sdk }} and os ${{ matrix.os }}
         run: |
           dart pub get
           dart format --set-exit-if-changed .
+
+      - name: Analysis sdk ${{ matrix.sdk }} and os ${{ matrix.os }}
+        run: |
           dart analyze
+          dart analyze test
+
+      - name: Make sdk ${{ matrix.sdk }} and os ${{ matrix.os }}
+        run: make dep && make analyze

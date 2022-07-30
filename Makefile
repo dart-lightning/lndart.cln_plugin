@@ -2,8 +2,9 @@ CC=dart
 FMT=format
 ARGS="--help"
 PROBLEM=
+NAME=cln_plugin
 
-default: fmt examples
+default: fmt build
 
 dep:
 	$(CC) pub get
@@ -20,3 +21,6 @@ clean:
 
 check:
 	$(CC) test
+
+build:
+	$(CC) compile exe bin/cln_plugin.dart -o $(NAME)

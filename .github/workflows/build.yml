@@ -2,9 +2,13 @@ name: cln_plugin common sanity check
 
 on:
   push:
-    branches: [main]
+    branches:
+      - template/class
+      - template/function
   pull_request:
-    branches: [main]
+    branches:
+      - template/class
+      - template/function
 
 jobs:
   test:
@@ -30,6 +34,3 @@ jobs:
         run: |
           dart analyze
           dart analyze test
-
-      - name: Make sdk ${{ matrix.sdk }} and os ${{ matrix.os }}
-        run: make dep && make analyze

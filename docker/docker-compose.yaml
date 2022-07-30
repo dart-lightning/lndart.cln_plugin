@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+  cln:
+    build:
+      context: ../
+      dockerfile: ./docker/Dockerfile.integration_test
+    network_mode: "host"
+    depends_on:
+      - lnlambda
+    volumes:
+      - ./sandbox/:/workdir
+      - ../:/workdir/code

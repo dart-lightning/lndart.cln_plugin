@@ -9,4 +9,4 @@ cd .. || exit 1
 ./run-clightning.sh
 cd code || exit 1
 ls -la
-make RPC_PATH=/workdir/lightning_dir_one/regtest/lightning-rpc ci
+RPC_PATH=/workdir/lightning_dir_one/regtest/lightning-rpc make check
